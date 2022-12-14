@@ -1,8 +1,6 @@
 import json
 import jsonpath
-from pytest import fixture
-from pytest import mark
-
+from pytest import fixture, mark
 from methods.authors_methods import AuthorsApiMethod
 
 
