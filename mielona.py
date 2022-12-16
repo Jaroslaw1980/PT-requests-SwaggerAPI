@@ -3,29 +3,22 @@ import json
 import jsonpath
 import pytest
 from pytest import mark
+from tests.books_fixtures import *
 
-# api_url_post_activity = "https://fakerestapi.azurewebsites.net//api/v1/Activities"
-# header_post = {"Content-Type": "application/json; v=1.0"}
-# file = open("C:/Projects/APIAutomationPython/json_data/activities_json/json_add_activitie.json")
-# json_add_activity = file.read()
-# json_request = json.loads(json_add_activity)
-#
-# add_activity_response = requests.post(url=api_url_post_activity, json=json_request, headers=header_post)
-#
-# print(add_activity_response.text)
+url = "https://fakerestapi.azurewebsites.net/api/v1/Books"
+header_post = {"Content-Type": "application/json; v=1.0"}
+json_file = "C:/Projects/APIAutomationPython/resources/json_data/books_json/books.json"
+response = setup_request_method(json_file=json_file, requests_method="post",
+                                url=url, header=header_post)
 
-api_url_get_activity = "https://fakerestapi.azurewebsites.net//api/v1/Activities"
-header_post = {'accept': 'text/plain; v=1.0'}
+json_text = response.text
+json_request = json.loads(json_text)
+json_id = jsonpath.jsonpath(json_request, 'id')
+id_final = json_id[0]
 
-get_activity_response = requests.get(url=api_url_get_activity, headers=header_post)
-
-print(type(get_activity_response))
-
-header = get_activity_response.headers
-print(header)
-print(type(header))
-
-print(header['Server'])
-
-
-
+url_delete = "https://fakerestapi.azurewebsites.net/api/v1/Books/"
+url_proper = url_delete + str(id_final)
+print(url_proper)
+header = {"accept": "text/plain; v=1.0"}
+respons_delete = setup_request_method(url=url_proper, header=header, requests_method="delete")
+print(respons_delete.status_code)
