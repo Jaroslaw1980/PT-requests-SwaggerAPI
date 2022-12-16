@@ -5,3 +5,4 @@ Reports
 __init__.py
 pytest_html_report.html
 output.json
+.idea
