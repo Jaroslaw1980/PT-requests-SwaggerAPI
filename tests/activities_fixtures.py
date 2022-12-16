@@ -3,6 +3,7 @@ from pytest import fixture
 import json
 import jsonpath
 
+from base_method.json_loader import get_data_from_json
 from resources.api_url.activities_api_url import *
 from resources.headers.activities_api_headers import ActivitiesHeader
 
@@ -18,10 +19,11 @@ def add_activity_method():
 
 @fixture
 def get_response_id(add_activity_method):
-    json_text = add_activity_method.text
-    json_request = json.loads(json_text)
-    json_id = jsonpath.jsonpath(json_request, 'id')
-    return json_id[0]
+    return get_data_from_json(add_activity_method, 'id')
+    # json_text = add_activity_method.text
+    # json_request = json.loads(json_text)
+    # json_id = jsonpath.jsonpath(json_request, 'id')
+    # return json_id[0]
 
 
 @fixture

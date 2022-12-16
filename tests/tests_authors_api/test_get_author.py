@@ -1,6 +1,6 @@
-import json
-import jsonpath
 from pytest import mark
+
+from base_method.json_loader import get_data_from_json
 
 
 @mark.usefixtures("author_get_method")
@@ -9,20 +9,17 @@ class TestsGetAuthor:
     @mark.authors
     @mark.regression
     def test_get_response_should_have_correct_id(self, author_get_method):
-        response_json = json.loads(author_get_method.text)
-        response_id = jsonpath.jsonpath(response_json, 'id')
-        assert response_id[0] == 1
+        response_id = get_data_from_json(author_get_method, 'id')
+        assert response_id == 1
 
     @mark.authors
     @mark.regression
     def test_get_response_should_have_correct_idbook(self, author_get_method):
-        response_json = json.loads(author_get_method.text)
-        response_title = jsonpath.jsonpath(response_json, 'idBook')
-        assert response_title[0] == 1
+        response_title = get_data_from_json(author_get_method, 'idBook')
+        assert response_title == 1
 
     @mark.authors
     @mark.regression
     def test_get_respone_should_have_correct_firstname(self, author_get_method):
-        response_json = json.loads(author_get_method.text)
-        response_status = jsonpath.jsonpath(response_json, 'firstName')
-        assert response_status[0] == 'First Name 1'
+        response_name = get_data_from_json(author_get_method, 'firstName')
+        assert response_name == 'First Name 1'

@@ -1,6 +1,8 @@
 import jsonpath
 from pytest import mark
 
+from base_method.json_loader import get_data_from_json
+
 
 @mark.usefixtures("activities_add_method", "activities_delete_method", "activities_get_method")
 class TestsAddActivity:
@@ -13,9 +15,8 @@ class TestsAddActivity:
     @mark.activity
     @mark.regression
     def test_check_if_activity_is_completed(self, activities_add_method):
-        json_text = activities_add_method.text
-        completed = jsonpath.jsonpath(json_text, 'completed')
-        assert completed == False
+        completed = get_data_from_json(activities_add_method, 'completed')
+        assert completed == True
 
     @mark.activity
     @mark.regression
