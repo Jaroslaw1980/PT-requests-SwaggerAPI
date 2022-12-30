@@ -1,6 +1,5 @@
 from pytest import mark
 
-
 @mark.usefixtures("get_all_activities_method")
 class TestsGetActivitiesGETALL:
 

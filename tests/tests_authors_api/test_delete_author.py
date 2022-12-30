@@ -1,6 +1,5 @@
 from pytest import mark
 
-
 @mark.usefixtures("author_delete_method")
 class TestsDeleteActivity:
 

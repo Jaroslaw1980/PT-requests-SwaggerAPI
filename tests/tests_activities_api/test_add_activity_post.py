@@ -1,7 +1,5 @@
 from pytest import mark
-
 from base_method.json_loader import get_data_from_json
-
 
 @mark.usefixtures("activities_add_method")
 class TestsAddAcitivityPOST:

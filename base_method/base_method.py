@@ -1,7 +1,7 @@
 import json
 import requests
 
-
+# Base method for setting up requests depends on the request method (POST, GET, etc.)
 def setup_request_method(json_file=None, url=None, header=None, requests_method="get"):
 
     requests_method = requests_method.lower()

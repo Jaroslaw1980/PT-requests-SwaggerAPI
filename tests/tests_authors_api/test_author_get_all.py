@@ -1,6 +1,5 @@
 from pytest import mark
 
-
 @mark.usefixtures("author_get_all_method")
 class TestsGetAuthorsGETALL:
 

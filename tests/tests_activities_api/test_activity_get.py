@@ -1,9 +1,5 @@
-import json
-import jsonpath
 from pytest import mark
-
 from base_method.json_loader import get_data_from_json
-
 
 @mark.usefixtures("get_activity_method")
 class TestsGetActivity:

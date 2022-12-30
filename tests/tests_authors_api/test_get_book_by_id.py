@@ -1,6 +1,5 @@
 from pytest import mark
 
-
 @mark.usefixtures("get_book_by_id_method")
 class TestsGetBookById:
 
